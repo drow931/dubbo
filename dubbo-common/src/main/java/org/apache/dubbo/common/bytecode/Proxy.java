@@ -172,7 +172,7 @@ public abstract class Proxy {
                     String desc = ReflectUtils.getDesc(method);
                     // 如果方法描述字符串已在 worked 中，则忽略。考虑这种情况，
                     // A 接口和 B 接口中包含一个完全相同的方法
-                    if (worked.contains(desc)) {
+                    if (worked.contains(desc) || Modifier.isStatic(method.getModifiers())) {
                         continue;
                     }
                     if (ics[i].isInterface() && Modifier.isStatic(method.getModifiers())) {
